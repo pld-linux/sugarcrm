@@ -1,0 +1,11 @@
+--- ../install/2dbConfig.php~	2005-08-12 11:01:00.000000000 +0300
++++ ../install/2dbConfig.php	2005-08-12 11:39:11.000000000 +0300
+@@ -95,7 +95,7 @@
+    $setup_db_username_is_privileged = true;
+    $_SESSION['setup_db_username_is_privileged'] = $setup_db_username_is_privileged;
+ 
+-   $setup_db_admin_user_name = 'root';
++   $setup_db_admin_user_name = 'mysql';
+    $_SESSION['setup_db_admin_user_name'] = $setup_db_admin_user_name;
+ 
+    $setup_db_admin_password = '';
