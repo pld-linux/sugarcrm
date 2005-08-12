@@ -101,7 +101,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc INSTALLATION.txt LICENSE PATCH.txt README.txt UPGRADE.TXT
-%attr(751,root,root) %dir %{_sysconfdir}
+%attr(710,root,http) %dir %{_sysconfdir}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
 %dir %{_appdir}
