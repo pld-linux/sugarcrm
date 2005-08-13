@@ -1,11 +1,12 @@
 # TODO
 # - secure it
 Summary:	Customer Relationship Management
+Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	3.0.1
 %define	_beta	b
 %define	_rel	15
-Release:	%{_beta}.%{_rel}
+Release:	0.%{_beta}.%{_rel}
 Epoch:		0
 License:	SugarCRM Public License
 Group:		Applications/WWW
@@ -22,16 +23,16 @@ Requires:	php-xml
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	_appdir %{_datadir}/%{name}
-%define	_sysconfdir /etc/%{name}
+%define		_appdir		%{_datadir}/%{name}
+%define		_sysconfdir	/etc/%{name}
 
 # symlinked from appdir
-%define _noautocompressdoc LICENSE
+%define		_noautocompressdoc	LICENSE
 
 # nothing to strip/chrpath/compress
-%define	no_install_post_strip 1
-%define	no_install_post_chrpath 1
-%define	no_install_post_compress_modules 1
+%define		no_install_post_strip			1
+%define		no_install_post_chrpath			1
+%define		no_install_post_compress_modules	1
 
 %description
 SugarCRM is a suite of business automation tools for managing your
@@ -39,8 +40,15 @@ marketing, sales and customer service operations. From leads to
 contacts, opportunities to cases, the Sugar Suite helps you track and
 gain insight into your customers.
 
+%description -l pl
+SugarCRM to zestaw narzêdzi automatyki biznesowej do zarz±dzania
+operacjami marketingu, sprzeda¿y i obs³ugi klientów. Od wprowadzenia
+do kontraktów, od okazji do spraw Sugar Suite pomaga ¶ledziæ i mieæ
+wgl±d w swoich klientów.
+
 %package setup
 Summary:	SugarCRM setup package
+Summary(pl):	Pakiet instalacyjny SugarCRM
 Group:		Applications/WWW
 PreReq:		%{name} = %{epoch}:%{version}-%{release}
 
@@ -48,6 +56,11 @@ PreReq:		%{name} = %{epoch}:%{version}-%{release}
 Install this package to configure initial SugarCRM installation. You
 should uninstall this package when you're done, as it considered
 insecure to keep the setup files in place.
+
+%description setup -l pl
+Ten pakiet nale¿y zainstalowaæ do skonfigurowania pocz±tkowej
+instalacji SugarCRM. Nastêpnie nale¿y go odinstalowaæ, poniewa¿
+trzymanie plików instalacyjnych mo¿e byæ niebezpieczne.
 
 %prep
 %setup -q -n SugarSuite-Full-%{version}%{_beta}
