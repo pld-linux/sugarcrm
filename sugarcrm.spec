@@ -24,7 +24,8 @@ Source13:	http://www.sugarforge.org/frs/download.php/239/sugarCRM_301_deutsch.zi
 Patch0:		%{name}-mysqlroot.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.226
-Requires:	apache >= 1.3.33-2
+Requires:	webserver = apache
+Conflicts:	apache1 < 1.3.33-2
 Requires:	php >= 3:4.2.0
 Requires:	php-mysql
 Requires:	php-xml
