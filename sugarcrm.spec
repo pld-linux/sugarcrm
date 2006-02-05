@@ -113,7 +113,7 @@ fi
 
 if [ -f /etc/sugarcrm/sugarcrm.conf.rpmsave ]; then
 	if [ -d /etc/apache/webapps.d ]; then
-		cp -f %{_sysconfdir}/sugarcrm.conf{,.rpmnew}
+		cp -f %{_sysconfdir}/apache.conf{,.rpmnew}
 		cp -f /etc/sugarcrm/sugarcrm.conf.rpmsave %{_sysconfdir}/apache.conf
 	fi
 
