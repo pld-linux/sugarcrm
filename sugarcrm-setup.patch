@@ -1,0 +1,40 @@
+--- sugarcrm/install/performSetup.php~	2006-02-06 21:04:01.000000000 +0200
++++ sugarcrm/install/performSetup.php	2006-02-06 21:24:01.773459940 +0200
+@@ -110,10 +110,10 @@
+ 
+ <?php
+     echo 'Creating the config file...';
+-    if( is_file('config.php') ){
+-        $is_writable = is_writable('config.php');
++    if( is_file('/etc/webapps/sugarcrm/config.php') ){
++        $is_writable = is_writable('/etc/webapps/sugarcrm/config.php');
+         // require is needed here (config.php is sometimes require'd from install.php)
+-        require('config.php');
++        require('/etc/webapps/sugarcrm/config.php');
+     }
+     else {
+         $is_writable = is_writable('.');
+--- sugarcrm/install/performSetup.php~	2006-02-06 21:24:01.000000000 +0200
++++ sugarcrm/install/performSetup.php	2006-02-06 21:25:24.066773859 +0200
+@@ -159,7 +159,7 @@
+ 	var_export($sugar_config, true) .
+ 	";\n?>\n";
+ 
+-if( $is_writable && write_array_to_file( "sugar_config", $sugar_config, "config.php" ) ){
++if( $is_writable && write_array_to_file( "sugar_config", $sugar_config, "/etc/webapps/sugarcrm/config.php" ) ){
+ 	echo 'done<br>';
+ }
+ else {
+--- sugarcrm/include/utils/file_utils.php~	2006-02-06 21:04:00.000000000 +0200
++++ sugarcrm/include/utils/file_utils.php	2006-02-06 21:28:31.494876497 +0200
+@@ -68,9 +68,7 @@
+         fputs( $fh, $the_string, strlen($the_string) );
+         fclose( $fh );
+         
+-        if(!chmod($the_file, octdec($mode))) { // set permissions as needed
+-        	return false;
+-        }
++        @chmod($the_file, octdec($mode));
+         return( true );
+     } else {
+         return( false );

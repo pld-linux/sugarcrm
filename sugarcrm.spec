@@ -9,7 +9,7 @@ Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.4
+Release:	0.6
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -25,6 +25,7 @@ Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge
 Patch0:		%{name}-mysqlroot.patch
 Patch1:		%{name}-smarty.patch
 Patch2:		%{name}-pear.patch
+Patch3:		%{name}-setup.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	Smarty >= 2.6.10-4
@@ -84,13 +85,15 @@ rm -f jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite fro
 %{__unzip} -qq %{SOURCE13} -x manifest.php
 
 # undos the sources
-find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
+find -regex '.*\.\(php\|inc\|html\|txt\|js\|properties\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 rm -r include/Smarty
 rm -r include/HTTP_WebDAV_Server
 rm -r include/Mail_IMAP
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
