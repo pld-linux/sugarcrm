@@ -3,14 +3,13 @@
 # - add other (all?) languages
 # - language packs overwrite common files like jscalendar/calendar-setup_3.js,
 #   which contain locality specifics like first_day_of_week
-# - system PEAR packages
 # - language packs have different license. subpackage them? separate specs?
 %define		namesrc	SugarSuite
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.3
+Release:	0.4
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -25,13 +24,17 @@ Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge
 # Source13-md5:	c1fd9063866e7e3be7fe5a4084e3c84e
 Patch0:		%{name}-mysqlroot.patch
 Patch1:		%{name}-smarty.patch
+Patch2:		%{name}-pear.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
+Requires:	Smarty >= 2.6.10-4
 Requires:	php >= 3:4.3.0
 Requires:	php-mysql
+Requires:	php-pear-HTTP_WebDAV_Server
+#Requires:	php-pear-Mail_IMAP - doesn't seem to be used
 Requires:	php-xml
+Requires:	php-curl
 Requires:	webapps
-Requires:	Smarty >= 2.6.10-4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -83,7 +86,9 @@ rm -f jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite fro
 # undos the sources
 find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
-rm -rf include/Smarty
+rm -r include/Smarty
+rm -r include/HTTP_WebDAV_Server
+rm -r include/Mail_IMAP
 %patch0 -p1
 %patch1 -p1
 
@@ -94,7 +99,7 @@ install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir}}
 
 cp -a */ $RPM_BUILD_ROOT%{_appdir}
 cp -a *.php *.html $RPM_BUILD_ROOT%{_appdir}
-cp -a robots.txt $RPM_BUILD_ROOT%{_appdir}
+cp -a robots.txt log4php.properties $RPM_BUILD_ROOT%{_appdir}
 
 cp -a LICENSE.txt $RPM_BUILD_ROOT%{_appdir}
 ln -sf %{_appdir}/LICENSE.txt LICENSE
@@ -169,9 +174,11 @@ fi
 %{_appdir}/*.txt
 %{_appdir}/*.html
 %{_appdir}/*.php
+%{_appdir}/log4php.properties
 %exclude %{_appdir}/install
 %exclude %{_appdir}/install.php
 
+# must be writable: cache, custom, data, modules, config.php
 %defattr(644,root,http,775)
 %{_appdir}/cache
 %{_appdir}/custom
