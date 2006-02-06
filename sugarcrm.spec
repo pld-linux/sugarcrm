@@ -2,6 +2,7 @@
 # - secure it
 # - subpackages?
 # - add other languages
+%define		namesrc	SugarSuite
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
@@ -9,12 +10,12 @@ Version:	4.0.1
 Release:	0.1
 License:	SugarCRM Public License
 Group:		Applications/WWW
-Source0:	http://www.sugarforge.org/frs/download.php/242/SugarSuite-Full-%{version}.zip
-# Source0-md5:	
+Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
+# Source0-md5:	bce40535bf664ec567889534dbc6ba2c
 Source1:	%{name}.conf
 Source10:	http://www.sugarforge.org/frs/download.php/967/SugarCRM-%{version}-LangPack-pl_PL-2006-02-04.zip
 # Source10-md5:	
-#Source11:	http://www.sugarforge.org/frs/download.php/326/SugarSuite-%{version}-lang-es_es-20050817-2.zip
+#Source11:	http://www.sugarforge.org/frs/download.php/326/%{namesrc}-%{version}-lang-es_es-20050817-2.zip
 # Source11-md5:	
 Source12:	http://www.sugarforge.org/frs/download.php/958/SugarCRM-%{version}-LangPack-fr_FR-2005-02-01.zip
 # Source12-md5:	
