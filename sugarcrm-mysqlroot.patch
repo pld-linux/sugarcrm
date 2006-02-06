@@ -1,11 +1,11 @@
---- ../install/2dbConfig.php~	2005-08-12 11:01:00.000000000 +0300
-+++ ../install/2dbConfig.php	2005-08-12 11:39:11.000000000 +0300
-@@ -95,7 +95,7 @@
-    $setup_db_username_is_privileged = true;
-    $_SESSION['setup_db_username_is_privileged'] = $setup_db_username_is_privileged;
- 
--   $setup_db_admin_user_name = 'root';
-+   $setup_db_admin_user_name = 'mysql';
-    $_SESSION['setup_db_admin_user_name'] = $setup_db_admin_user_name;
- 
-    $setup_db_admin_password = '';
+--- SugarSuite-Full-4.0.1/install/dbConfig.php~	2006-02-06 14:08:09.000000000 +0200
++++ SugarSuite-Full-4.0.1/install/dbConfig.php	2006-02-06 14:08:53.000000000 +0200
+@@ -48,7 +48,7 @@
+     $_SESSION['setup_db_drop_tables']       = false;
+     $_SESSION['setup_db_pop_demo_data']     = false;
+     $_SESSION['setup_db_username_is_privileged']    = true;
+-    $_SESSION['setup_db_admin_user_name']   = 'root';
++    $_SESSION['setup_db_admin_user_name']   = 'mysql';
+     $_SESSION['setup_db_admin_password']    = '';
+     $_SESSION['setup_db_create_sugarsales_user']    = false;
+     $_SESSION['setup_db_sugarsales_user']       = empty($sugar_config['dbconfig']['db_user_name'])  ? 'sugarcrm' : $sugar_config['dbconfig']['db_user_name'];
