@@ -72,7 +72,8 @@ trzymanie plików instalacyjnych mo¿e byæ niebezpieczne.
 cd SugarSuite-Full-%{version}
 rm jscalendar/lang/calendar-pl.js # language zip contains better version
 %{__unzip} -qq %{SOURCE10} -x manifest.php
-%{__unzip} -qq %{SOURCE12} -x manifest.php
+rm -f jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite from fr_FR language
+(cd ..; ln -s SugarSuite-Full-%{version} fr_FR_401; %{__unzip} -qq %{SOURCE12} -x manifest.php)
 %{__unzip} -qq %{SOURCE13} -x manifest.php
 
 # undos the sources
