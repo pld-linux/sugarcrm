@@ -1,13 +1,16 @@
 # TODO
 # - secure it
-# - subpackages?
-# - add other languages
+# - add other (all?) languages
+# - language packs overwrite common files like jscalendar/calendar-setup_3.js,
+#   which contain locality specifics like first_day_of_week
+# - system Smarty and PEAR packages
+# - language packs have different license. subpackage them? separate specs?
 %define		namesrc	SugarSuite
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.1
+Release:	0.2
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -151,6 +154,7 @@ fi
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
 %dir %{_appdir}
+%{_appdir}/ModuleInstall
 %{_appdir}/XTemplate
 %{_appdir}/examples
 %{_appdir}/include
@@ -161,8 +165,9 @@ fi
 %{_appdir}/themes
 %{_appdir}/*.txt
 %{_appdir}/*.html
-%{_appdir}/[!i]*.php
-%{_appdir}/index.php
+%{_appdir}/*.php
+%exclude %{_appdir}/install
+%exclude %{_appdir}/install.php
 
 %defattr(644,root,http,775)
 %{_appdir}/cache
