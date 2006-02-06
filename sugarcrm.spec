@@ -27,7 +27,7 @@ Patch0:		%{name}-mysqlroot.patch
 Patch1:		%{name}-smarty.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
-Requires:	php >= 3:4.2.0
+Requires:	php >= 3:4.3.0
 Requires:	php-mysql
 Requires:	php-xml
 Requires:	webapps
