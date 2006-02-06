@@ -1,26 +1,25 @@
 # TODO
 # - secure it
 # - subpackages?
-%define	_beta	b
-%define	_rel	17
+# - add other languages
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
-Version:	3.0.1
-Release:	0.%{_beta}.%{_rel}
+Version:	4.0.1
+Release:	0.1
 License:	SugarCRM Public License
 Group:		Applications/WWW
-Source0:	http://www.sugarforge.org/frs/download.php/242/SugarSuite-Full-%{version}%{_beta}.zip
-# Source0-md5:	8f161b5c43209f0cb9273a724bbd6989
+Source0:	http://www.sugarforge.org/frs/download.php/242/SugarSuite-Full-%{version}.zip
+# Source0-md5:	
 Source1:	%{name}.conf
-Source10:	http://www.sugarforge.org/frs/download.php/360/SugarSuite-%{version}-lang-pl_pl-iso-beta-2005-06-29.zip
-# Source10-md5:	568f125bf87f5595bb50dd78ede824d3
-Source11:	http://www.sugarforge.org/frs/download.php/326/SugarSuite-3.0x-lang-es_es-20050817-2.zip
-# Source11-md5:	dd7811b78660facefd4573a9c3d24dc3
-Source12:	http://www.sugarforge.org/frs/download.php/243/SugarSuite-3.0.1b-lang-fr_FR-2005-07-05.zip
-# Source12-md5:	4ca7c64e99d41262b3d7606a632ae232
-Source13:	http://www.sugarforge.org/frs/download.php/239/sugarCRM_301_deutsch.zip
-# Source13-md5:	9f0c00ef8272917b6131c355b5467352
+Source10:	http://www.sugarforge.org/frs/download.php/967/SugarCRM-%{version}-LangPack-pl_PL-2006-02-04.zip
+# Source10-md5:	
+#Source11:	http://www.sugarforge.org/frs/download.php/326/SugarSuite-%{version}-lang-es_es-20050817-2.zip
+# Source11-md5:	
+Source12:	http://www.sugarforge.org/frs/download.php/958/SugarCRM-%{version}-LangPack-fr_FR-2005-02-01.zip
+# Source12-md5:	
+Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge-2005-12-19.zip
+# Source13-md5:	
 Patch0:		%{name}-mysqlroot.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -68,7 +67,7 @@ instalacji SugarCRM. Nastêpnie nale¿y go odinstalowaæ, poniewa¿
 trzymanie plików instalacyjnych mo¿e byæ niebezpieczne.
 
 %prep
-%setup -q -n SugarSuite-Full-%{version}%{_beta} -a 10 -a 11 -a 12 -a 13
+%setup -q -n SugarSuite-Full-%{version} -a 10 -a 12 -a 13
 # undos the sources
 find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
