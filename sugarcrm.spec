@@ -24,7 +24,7 @@ Source12:	http://www.sugarforge.org/frs/download.php/958/SugarCRM-%{version}-Lan
 # Source12-md5:	
 Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge-2005-12-19.zip
 # Source13-md5:	
-Patch0:		%{name}-mysqlroot.patch
+#Patch0:		%{name}-mysqlroot.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	php >= 3:4.2.0
@@ -82,7 +82,7 @@ rm -f jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite fro
 # undos the sources
 find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
-%patch0 -p1
+#%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
