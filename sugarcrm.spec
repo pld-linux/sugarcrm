@@ -3,14 +3,14 @@
 # - add other (all?) languages
 # - language packs overwrite common files like jscalendar/calendar-setup_3.js,
 #   which contain locality specifics like first_day_of_week
-# - system Smarty and PEAR packages
+# - system PEAR packages
 # - language packs have different license. subpackage them? separate specs?
 %define		namesrc	SugarSuite
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.2
+Release:	0.3
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -24,12 +24,14 @@ Source12:	http://www.sugarforge.org/frs/download.php/958/SugarCRM-%{version}-Lan
 Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge-2005-12-19.zip
 # Source13-md5:	c1fd9063866e7e3be7fe5a4084e3c84e
 Patch0:		%{name}-mysqlroot.patch
+Patch1:		%{name}-smarty.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	php >= 3:4.2.0
 Requires:	php-mysql
 Requires:	php-xml
 Requires:	webapps
+Requires:	Smarty >= 2.6.10-4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -81,7 +83,9 @@ rm -f jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite fro
 # undos the sources
 find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
+rm -rf include/Smarty
 %patch0 -p1
+%patch1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT

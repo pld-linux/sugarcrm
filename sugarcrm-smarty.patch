@@ -1,0 +1,11 @@
+--- SugarSuite-Full-4.0.1/include/Sugar_Smarty.php~	2006-02-06 17:38:12.000000000 +0200
++++ SugarSuite-Full-4.0.1/include/Sugar_Smarty.php	2006-02-06 19:08:12.000000000 +0200
+@@ -2,7 +2,7 @@
+ 
+ // $Id$
+ 
+-require_once('include/Smarty/Smarty.class.php');
++require_once('/usr/share/php/Smarty/Smarty.class.php');
+ require_once('include/dir_inc.php');
+ if(!defined('SUGAR_SMARTY_DIR'))
+ {
