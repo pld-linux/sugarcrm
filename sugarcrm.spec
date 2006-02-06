@@ -17,13 +17,12 @@ Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zi
 # Source0-md5:	bce40535bf664ec567889534dbc6ba2c
 Source1:	%{name}.conf
 Source10:	http://www.sugarforge.org/frs/download.php/967/SugarCRM-%{version}-LangPack-pl_PL-2006-02-04.zip
-# Source10-md5:
+# Source10-md5:	2612dd0f2d63614f80e571678675492c
 #Source11:	http://www.sugarforge.org/frs/download.php/326/%{namesrc}-%{version}-lang-es_es-20050817-2.zip
-# Source11-md5:
 Source12:	http://www.sugarforge.org/frs/download.php/958/SugarCRM-%{version}-LangPack-fr_FR-2005-02-01.zip
-# Source12-md5:
+# Source12-md5:	4413eb0ab37dceca318a71f6000d2283
 Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge-2005-12-19.zip
-# Source13-md5:
+# Source13-md5:	c1fd9063866e7e3be7fe5a4084e3c84e
 Patch0:		%{name}-mysqlroot.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
