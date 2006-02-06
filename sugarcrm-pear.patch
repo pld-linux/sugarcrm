@@ -1,0 +1,11 @@
+--- SugarSuite-Full-4.0.1/modules/vCals/HTTP_WebDAV_Server_vCal.php~	2006-02-06 19:09:39.000000000 +0200
++++ SugarSuite-Full-4.0.1/modules/vCals/HTTP_WebDAV_Server_vCal.php	2006-02-06 20:54:21.000000000 +0200
+@@ -28,7 +28,7 @@
+ require_once 'modules/Users/User.php';
+ require_once 'modules/Calendar/Calendar.php';
+ require_once 'modules/vCals/vCal.php';
+-require_once 'include/HTTP_WebDAV_Server/Server.php';
++require_once 'HTTP/WebDAV/Server.php';
+ 
+     
+     /**
