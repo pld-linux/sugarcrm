@@ -68,7 +68,13 @@ instalacji SugarCRM. Nastêpnie nale¿y go odinstalowaæ, poniewa¿
 trzymanie plików instalacyjnych mo¿e byæ niebezpieczne.
 
 %prep
-%setup -q -n SugarSuite-Full-%{version} -a 10 -a 12 -a 13
+%setup -qc
+cd SugarSuite-Full-%{version}
+rm jscalendar/lang/calendar-pl.js # language zip contains better version
+%{__unzip} -qq %{SOURCE10} -x manifest.php
+%{__unzip} -qq %{SOURCE12} -x manifest.php
+%{__unzip} -qq %{SOURCE13} -x manifest.php
+
 # undos the sources
 find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
 
@@ -76,6 +82,7 @@ find -regex '.*\.\(php\|inc\|html\|txt\|js\)$' -print0 | xargs -0 sed -i -e 's,\
 
 %install
 rm -rf $RPM_BUILD_ROOT
+cd SugarSuite-Full-%{version}
 install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir}}
 
 cp -a */ $RPM_BUILD_ROOT%{_appdir}
@@ -137,7 +144,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc INSTALLATION.txt LICENSE PATCH.txt README.txt UPGRADE.TXT
+%doc SugarSuite-Full-%{version}/{INSTALLATION.txt,LICENSE,PATCH.txt,README.txt,UPGRADE.TXT}
 %dir %attr(750,root,http) %{_sysconfdir}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
@@ -151,7 +158,6 @@ fi
 %{_appdir}/metadata
 %{_appdir}/soap
 %{_appdir}/themes
-%{_appdir}/upgrade
 %{_appdir}/*.txt
 %{_appdir}/*.html
 %{_appdir}/[!i]*.php
