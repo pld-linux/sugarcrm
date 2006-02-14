@@ -28,13 +28,14 @@ Patch2:		%{name}-pear.patch
 Patch3:		%{name}-setup.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
+BuildRequires:	unzip
 Requires:	Smarty >= 2.6.10-4
 Requires:	php >= 3:4.3.0
+Requires:	php-curl
 Requires:	php-mysql
 Requires:	php-pear-HTTP_WebDAV_Server
 #Requires:	php-pear-Mail_IMAP - doesn't seem to be used
 Requires:	php-xml
-Requires:	php-curl
 Requires:	webapps
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
