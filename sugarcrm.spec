@@ -9,7 +9,7 @@ Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.7
+Release:	0.8
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -125,6 +125,18 @@ if [ "$1" = "0" ]; then
 	chmod 640 %{_sysconfdir}/config.php
 	chown root:http %{_sysconfdir}/config.php
 fi
+
+%triggerin -- apache1
+%webapp_register apache %{_webapp}
+
+%triggerun -- apache1
+%webapp_unregister apache %{_webapp}
+
+%triggerin -- apache < 2.2.0, apache-base
+%webapp_register httpd %{_webapp}
+
+%triggerun -- apache < 2.2.0, apache-base
+%webapp_unregister httpd %{_webapp}
 
 %triggerpostun -- %{name} < 3.0.1-0.b.17
 # rescue app config
