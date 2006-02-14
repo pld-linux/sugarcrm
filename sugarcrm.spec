@@ -98,7 +98,7 @@ rm -r include/Mail_IMAP
 %install
 rm -rf $RPM_BUILD_ROOT
 cd SugarSuite-Full-%{version}
-install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir},/etc/httpd/webapps.d}
+install -d $RPM_BUILD_ROOT{%{_appdir},%{_sysconfdir}}
 
 cp -a */ $RPM_BUILD_ROOT%{_appdir}
 cp -a *.php *.html $RPM_BUILD_ROOT%{_appdir}
@@ -112,9 +112,6 @@ install config.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
-
-ln -sf /etc/webapps/%{name}/httpd.conf $RPM_BUILD_ROOT/etc/httpd/webapps.d/%{name}.conf
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -167,7 +164,6 @@ fi
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/httpd.conf
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
-/etc/httpd/webapps.d/%{name}.conf
 %dir %{_appdir}
 %{_appdir}/ModuleInstall
 %{_appdir}/XTemplate
