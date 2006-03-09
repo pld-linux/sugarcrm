@@ -1,0 +1,24 @@
+diff -uNr sugarcrm-4.0.1.orig/fr_FR_401/include/phpmailer/class.phpmailer.php sugarcrm-4.0.1/fr_FR_401/include/phpmailer/class.phpmailer.php
+--- sugarcrm-4.0.1.orig/fr_FR_401/include/phpmailer/class.phpmailer.php	2006-03-09 13:25:19.000000000 +0100
++++ sugarcrm-4.0.1/fr_FR_401/include/phpmailer/class.phpmailer.php	2006-03-09 13:55:01.000000000 +0100
+@@ -33,7 +33,7 @@
+      * Sets the CharSet of the message.
+      * @var string
+      */
+-    var $CharSet           = "iso-8859-1";
++    var $CharSet           = "UTF-8";
+ 
+     /**
+      * Sets the Content-type of the message.
+diff -uNr sugarcrm-4.0.1.orig/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php sugarcrm-4.0.1/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php
+--- sugarcrm-4.0.1.orig/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php	2006-03-09 13:25:19.000000000 +0100
++++ sugarcrm-4.0.1/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php	2006-03-09 13:55:01.000000000 +0100
+@@ -33,7 +33,7 @@
+      * Sets the CharSet of the message.
+      * @var string
+      */
+-    var $CharSet           = "iso-8859-1";
++    var $CharSet           = "UTF-8";
+ 
+     /**
+      * Sets the Content-type of the message.
