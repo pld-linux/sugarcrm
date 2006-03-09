@@ -26,6 +26,7 @@ Patch0:		%{name}-mysqlroot.patch
 Patch1:		%{name}-smarty.patch
 Patch2:		%{name}-pear.patch
 Patch3:		%{name}-setup.patch
+Patch4:		%{name}-email_utf-8.patch
 URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
@@ -34,6 +35,7 @@ Requires:	php >= 3:4.3.0
 Requires:	php-curl
 Requires:	php-mysql
 Requires:	php-pear-HTTP_WebDAV_Server
+#Requires:	php-pear-Mail_IMAPv2
 #Requires:	php-pear-Mail_IMAP - doesn't seem to be used
 Requires:	php-xml
 Requires:	webapps
@@ -95,6 +97,7 @@ rm -r include/Mail_IMAP
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
