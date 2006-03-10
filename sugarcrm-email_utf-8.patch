@@ -1,6 +1,6 @@
-diff -uNr sugarcrm-4.0.1.orig/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php sugarcrm-4.0.1/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php
---- sugarcrm-4.0.1.orig/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php	2006-03-09 13:25:19.000000000 +0100
-+++ sugarcrm-4.0.1/SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php	2006-03-09 13:55:01.000000000 +0100
+diff -uNr SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php
+--- SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php	2006-03-09 18:06:18.000000000 +0100
++++ SugarSuite-Full-4.0.1/include/phpmailer/class.phpmailer.php	2006-03-09 18:16:04.000000000 +0100
 @@ -33,7 +33,7 @@
       * Sets the CharSet of the message.
       * @var string
