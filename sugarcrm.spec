@@ -9,19 +9,31 @@ Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.8
+Release:	0.9
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
 # Source0-md5:	bce40535bf664ec567889534dbc6ba2c
 Source1:	%{name}.conf
-Source10:	http://www.sugarforge.org/frs/download.php/967/SugarCRM-%{version}-LangPack-pl_PL-2006-02-04.zip
-# Source10-md5:	2612dd0f2d63614f80e571678675492c
-#Source11:	http://www.sugarforge.org/frs/download.php/326/%{namesrc}-%{version}-lang-es_es-20050817-2.zip
-Source12:	http://www.sugarforge.org/frs/download.php/958/SugarCRM-%{version}-LangPack-fr_FR-2005-02-01.zip
-# Source12-md5:	4413eb0ab37dceca318a71f6000d2283
+#polish
+Source10:	http://www.sugarforge.org/frs/download.php/1111/SugarCRM-%{version}c-LangPack-pl_PL-2006-03-16.zip
+# Source10-md5:	74fcbe135fcf9b3091d8461066ca4ba2
+#spanish
+#Source11:	http://www.sugarforge.org/frs/download.php/1097/%{namesrc}-%{version}d-lang-es_es-20060308.zip
+Source12:	http://www.sugarforge.org/frs/download.php/1136/SugarCRM-%{version}e-LangPack-fr_FR-2005-03-22.zip
+# Source12-md5:	65a782e199f534d22a162453b7ed19c2
 Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge-2005-12-19.zip
 # Source13-md5:	c1fd9063866e7e3be7fe5a4084e3c84e
+#rusian
+# Source14:	http://www.sugarforge.org/frs/download.php/805/SugarRus.zip
+#spanisz-latin
+# Source15:	http://www.sugarforge.org/frs/download.php/1084/SugarOpen-4.0.1c-lang-sp_ve.zip
+# 
+# Source16:	
+#czech
+# Source17:	http://www.sugarforge.org/frs/download.php/1125/BETA_cz_4.0.1e.zip
+#italiano utf
+# Source18:	http://www.sugarforge.org/frs/download.php/1066/it_it_4.0.1c.utf.langpack.zip
 Patch0:		%{name}-mysqlroot.patch
 Patch1:		%{name}-smarty.patch
 Patch2:		%{name}-pear.patch
