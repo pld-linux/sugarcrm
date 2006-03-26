@@ -3,37 +3,43 @@
 # - add other (all?) languages
 # - language packs overwrite common files like jscalendar/calendar-setup_3.js,
 #   which contain locality specifics like first_day_of_week
+# - make these locale files as symlinks?:
+#    echo '<script type="text/javascript" src="jscalendar/lang/calendar-en.js"></script>';
+#    echo '<script type="text/javascript" src="jscalendar/calendar-setup_3.js"></script>';
 # - language packs have different license. subpackage them? separate specs?
 %define		namesrc	SugarSuite
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.9
+Release:	0.10
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
 # Source0-md5:	bce40535bf664ec567889534dbc6ba2c
 Source1:	%{name}.conf
-#polish
+# polish
 Source10:	http://www.sugarforge.org/frs/download.php/1111/SugarCRM-%{version}c-LangPack-pl_PL-2006-03-16.zip
 # Source10-md5:	74fcbe135fcf9b3091d8461066ca4ba2
-#spanish
-#Source11:	http://www.sugarforge.org/frs/download.php/1097/%{namesrc}-%{version}d-lang-es_es-20060308.zip
+# spanish
+Source11:	http://www.sugarforge.org/frs/download.php/1097/%{namesrc}-%{version}d-lang-es_es-20060308.zip
+# Source11-md5:	9e3beb6e97186b8e0983ec411cda92a7
 Source12:	http://www.sugarforge.org/frs/download.php/1136/SugarCRM-%{version}e-LangPack-fr_FR-2005-03-22.zip
 # Source12-md5:	65a782e199f534d22a162453b7ed19c2
 Source13:	http://www.sugarforge.org/frs/download.php/849/SugarEnt-4.0-lang-ge_ge-2005-12-19.zip
 # Source13-md5:	c1fd9063866e7e3be7fe5a4084e3c84e
-#rusian
-# Source14:	http://www.sugarforge.org/frs/download.php/805/SugarRus.zip
-#spanisz-latin
-# Source15:	http://www.sugarforge.org/frs/download.php/1084/SugarOpen-4.0.1c-lang-sp_ve.zip
-# 
-# Source16:	
-#czech
-# Source17:	http://www.sugarforge.org/frs/download.php/1125/BETA_cz_4.0.1e.zip
-#italiano utf
-# Source18:	http://www.sugarforge.org/frs/download.php/1066/it_it_4.0.1c.utf.langpack.zip
+# russian
+Source14:	http://www.sugarforge.org/frs/download.php/805/SugarRus.zip
+# Source14-md5:	c3f3212f7b4f23de113b864ddcce993b
+# spanish-latin
+Source15:	http://www.sugarforge.org/frs/download.php/1084/SugarOpen-%{version}c-lang-sp_ve.zip
+# Source15-md5:	8355b8d5b3b7ebd52b0c807aaea8e71e
+# czech
+Source16:	http://www.sugarforge.org/frs/download.php/1125/BETA_cz_%{version}e.zip
+# Source16-md5:	ac622f8b76075cecefd8973097afd901
+# italiano utf
+Source17:	http://www.sugarforge.org/frs/download.php/1066/it_it_%{version}c.utf.langpack.zip
+# Source17-md5:	0dd47f0fa48547d9dcdfa9f9f7671aa2
 Patch0:		%{name}-mysqlroot.patch
 Patch1:		%{name}-smarty.patch
 Patch2:		%{name}-pear.patch
@@ -47,8 +53,8 @@ Requires:	php >= 3:4.3.0
 Requires:	php-curl
 Requires:	php-mysql
 Requires:	php-pear-HTTP_WebDAV_Server
-#Requires:	php-pear-Mail_IMAPv2
 #Requires:	php-pear-Mail_IMAP - doesn't seem to be used
+#Requires:	php-pear-Mail_IMAPv2
 Requires:	php-xml
 Requires:	webapps
 BuildArch:	noarch
@@ -93,11 +99,38 @@ trzymanie plików instalacyjnych mo¿e byæ niebezpieczne.
 %prep
 %setup -qc
 cd SugarSuite-Full-%{version}
+
+# polish
 rm jscalendar/lang/calendar-pl.js # language zip contains better version
 %{__unzip} -qq %{SOURCE10} -x manifest.php
-rm -f jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite from fr_FR language
+
+# spanish
+rm jscalendar/{lang/calendar-es.js,calendar-setup_3.js} # allow overwrite from es_ES language
+%{__unzip} -qq %{SOURCE11} -x manifest.php
+
+# french
+rm jscalendar/{lang/calendar-fr.js,calendar-setup_3.js} # allow overwrite from fr_FR language
 (cd ..; ln -s SugarSuite-Full-%{version} fr_FR_401; %{__unzip} -qq %{SOURCE12} -x manifest.php)
+
+# german
 %{__unzip} -qq %{SOURCE13} -x manifest.php
+
+# russian
+(cd ..; ln -s SugarSuite-Full-%{version} SugarRus; %{__unzip} -qq %{SOURCE14} -x SugarRus/manifest.php)
+
+# spanish-latin
+%{__unzip} -qq %{SOURCE15} -x manifest.php
+
+# czech
+(cd ..; ln -s SugarSuite-Full-%{version} cs_cz; %{__unzip} -qq %{SOURCE16} -x cs_cz/manifest.php)
+
+# italiano utf
+mv index.php{,.orig}
+rm jscalendar/lang/calendar-it.js
+rm jscalendar/calendar-setup_3.js
+rm include/phpmailer/language/phpmailer.lang-it.php
+%{__unzip} -qq %{SOURCE17} -x manifest.php
+mv -f index.php{.orig,}
 
 # undos the sources
 find -regex '.*\.\(php\|inc\|html\|txt\|js\|properties\)$' -print0 | xargs -0 sed -i -e 's,\r$,,'
