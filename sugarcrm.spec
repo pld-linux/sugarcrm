@@ -49,7 +49,7 @@ URL:		http://www.sugarforge.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires:	Smarty >= 2.6.10-4
-Requires:	php >= 3:4.3.0
+Requires:	php >= 3:4.2.0
 Requires:	php-curl
 Requires:	php-mysql
 Requires:	php-pear-HTTP_WebDAV_Server
