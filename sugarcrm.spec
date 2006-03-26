@@ -8,11 +8,12 @@
 #    echo '<script type="text/javascript" src="jscalendar/calendar-setup_3.js"></script>';
 # - language packs have different license. subpackage them? separate specs?
 %define		namesrc	SugarSuite
+%include	/usr/lib/rpm/macros.php
 Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.10
+Release:	0.12
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -46,19 +47,18 @@ Patch2:		%{name}-pear.patch
 Patch3:		%{name}-setup.patch
 Patch4:		%{name}-email_utf-8.patch
 URL:		http://www.sugarforge.org/
+BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires:	Smarty >= 2.6.10-4
 Requires:	php >= 3:4.2.0
 Requires:	php-curl
 Requires:	php-mysql
-Requires:	php-pear-HTTP_WebDAV_Server
-#Requires:	php-pear-Mail_IMAP - doesn't seem to be used
-#Requires:	php-pear-Mail_IMAPv2
 Requires:	php-xml
 Requires:	webapps
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
 
 %define		_webapps	/etc/webapps
 %define		_webapp		%{name}
@@ -67,6 +67,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # symlinked from appdir
 %define		_noautocompressdoc	LICENSE
+%define		_noautoreq	'pear(/etc/webapps/.*)' 'pear([a-z/.].*.php)' 'pear(CustomFieldsTable.php)' 'pear(CustomFieldsTableSchema.php)' 'pear(DBHelper.php)' 'pear(DBManager.php)' 'pear(FieldsMetaData.php)' 'pear(ModuleInstall/ModuleInstaller.php)' 'pear(MysqlHelper.php)' 'pear(MysqlManager.php)' 'pear(XTemplate/xtpl.php)'
 
 %description
 SugarCRM is a suite of business automation tools for managing your
@@ -138,6 +139,7 @@ find -regex '.*\.\(php\|inc\|html\|txt\|js\|properties\)$' -print0 | xargs -0 se
 rm -r include/Smarty
 rm -r include/HTTP_WebDAV_Server
 rm -r include/Mail_IMAP
+rm -r include/Net_URL
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
