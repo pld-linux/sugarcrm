@@ -13,7 +13,7 @@ Summary:	Customer Relationship Management
 Summary(pl):	Narzêdzie CRM
 Name:		sugarcrm
 Version:	4.0.1
-Release:	0.12
+Release:	0.14
 License:	SugarCRM Public License
 Group:		Applications/WWW
 Source0:	http://www.sugarforge.org/frs/download.php/919/%{namesrc}-%{version}.zip
@@ -51,11 +51,11 @@ BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	unzip
 Requires:	Smarty >= 2.6.10-4
-Requires:	php >= 3:4.2.0
-Requires:	php-curl
-Requires:	php-mysql
-Requires:	php-xml
+Requires:	php(curl)
+Requires:	php(mysql)
+Requires:	php(xml)
 Requires:	webapps
+Requires:	webserver(php) >= 4.2.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
