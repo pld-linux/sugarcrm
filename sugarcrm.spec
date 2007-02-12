@@ -10,7 +10,7 @@
 %define		namesrc	SugarSuite
 %include	/usr/lib/rpm/macros.php
 Summary:	Customer Relationship Management
-Summary(pl):	Narzêdzie CRM
+Summary(pl.UTF-8):   NarzÄ™dzie CRM
 Name:		sugarcrm
 Version:	4.0.1
 Release:	0.14
@@ -75,15 +75,15 @@ marketing, sales and customer service operations. From leads to
 contacts, opportunities to cases, the Sugar Suite helps you track and
 gain insight into your customers.
 
-%description -l pl
-SugarCRM to zestaw narzêdzi automatyki biznesowej do zarz±dzania
-operacjami marketingu, sprzeda¿y i obs³ugi klientów. Od wprowadzenia
-do kontraktów, od okazji do spraw Sugar Suite pomaga ¶ledziæ i mieæ
-wgl±d w swoich klientów.
+%description -l pl.UTF-8
+SugarCRM to zestaw narzÄ™dzi automatyki biznesowej do zarzÄ…dzania
+operacjami marketingu, sprzedaÅ¼y i obsÅ‚ugi klientÃ³w. Od wprowadzenia
+do kontraktÃ³w, od okazji do spraw Sugar Suite pomaga Å›ledziÄ‡ i mieÄ‡
+wglÄ…d w swoich klientÃ³w.
 
 %package setup
 Summary:	SugarCRM setup package
-Summary(pl):	Pakiet instalacyjny SugarCRM
+Summary(pl.UTF-8):   Pakiet instalacyjny SugarCRM
 Group:		Applications/WWW
 Requires:	%{name} = %{version}-%{release}
 
@@ -92,10 +92,10 @@ Install this package to configure initial SugarCRM installation. You
 should uninstall this package when you're done, as it considered
 insecure to keep the setup files in place.
 
-%description setup -l pl
-Ten pakiet nale¿y zainstalowaæ do skonfigurowania pocz±tkowej
-instalacji SugarCRM. Nastêpnie nale¿y go odinstalowaæ, poniewa¿
-trzymanie plików instalacyjnych mo¿e byæ niebezpieczne.
+%description setup -l pl.UTF-8
+Ten pakiet naleÅ¼y zainstalowaÄ‡ do skonfigurowania poczÄ…tkowej
+instalacji SugarCRM. NastÄ™pnie naleÅ¼y go odinstalowaÄ‡, poniewaÅ¼
+trzymanie plikÃ³w instalacyjnych moÅ¼e byÄ‡ niebezpieczne.
 
 %prep
 %setup -qc
