@@ -10,7 +10,7 @@
 %define		namesrc	SugarSuite
 %include	/usr/lib/rpm/macros.php
 Summary:	Customer Relationship Management
-Summary(pl.UTF-8):   Narzędzie CRM
+Summary(pl.UTF-8):	Narzędzie CRM
 Name:		sugarcrm
 Version:	4.0.1
 Release:	0.14
@@ -83,7 +83,7 @@ wgląd w swoich klientów.
 
 %package setup
 Summary:	SugarCRM setup package
-Summary(pl.UTF-8):   Pakiet instalacyjny SugarCRM
+Summary(pl.UTF-8):	Pakiet instalacyjny SugarCRM
 Group:		Applications/WWW
 Requires:	%{name} = %{version}-%{release}
 
