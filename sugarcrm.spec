@@ -8,7 +8,6 @@
 #    echo '<script type="text/javascript" src="jscalendar/calendar-setup_3.js"></script>';
 # - language packs have different license. subpackage them? separate specs?
 %define		namesrc	SugarSuite
-%include	/usr/lib/rpm/macros.php
 Summary:	Customer Relationship Management
 Summary(pl.UTF-8):	Narzędzie CRM
 Name:		sugarcrm
