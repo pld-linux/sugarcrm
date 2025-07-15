@@ -139,11 +139,11 @@ rm -r include/Smarty
 rm -r include/HTTP_WebDAV_Server
 rm -r include/Mail_IMAP
 rm -r include/Net_URL
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
+%patch -P4 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
